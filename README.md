@@ -1,76 +1,216 @@
-# analisededados_populacaoprisionalMG_2017a2024
-# Análise de Dados – População Prisional de Minas Gerais (2017–2024)
+# 🔍 Análise da População Prisional de Minas Gerais (2017-2024)
 
-## 📌 Descrição do projeto
-Este projeto apresenta uma análise exploratória de dados sobre a população prisional
-do estado de Minas Gerais no período de 2017 a 2024.
+## 📌 Visão Geral
 
-A análise busca identificar padrões e características da população prisional,
-com foco na evolução ao longo do tempo, distribuição por sexo e nível de escolaridade.
+Este projeto apresenta uma **análise exploratória detalhada da população prisional do estado de Minas Gerais** no período de 2017 a junho de 2024, com foco em características demográficas e socioeducacionais.
 
-O projeto foi desenvolvido com fins educacionais e de portfólio,
-demonstrando habilidades iniciais em análise de dados com Python.
+A análise investiga padrões e tendências na composição da população carcerária, identificando disparidades de gênero, perfil educacional e distribuição geográfica nas unidades prisionais de MG.
 
 ---
 
-## 🎯 Objetivos da análise
-- Analisar a evolução da população prisional ao longo dos anos.
-- Avaliar a distribuição da população prisional por sexo.
-- Identificar os níveis de escolaridade predominantes.
-- Desenvolver uma análise estruturada e interpretável a partir de dados públicos.
+## 🎯 Perguntas de Pesquisa
+
+Este projeto foi desenvolvido para responder às seguintes questões:
+
+- Como evoluiu a população prisional ao longo dos 7 anos analisados?
+- Qual é a distribuição por sexo na população carcerária de MG?
+- Qual é o nível de escolaridade predominante entre os presos?
+- Quais são as disparidades socioeducacionais na população prisional?
 
 ---
 
-## 📊 Principais análises realizadas
-- Evolução temporal da população prisional entre 2017 e 2024.
-- Comparação da população prisional por sexo.
-- Análise da escolaridade da população prisional.
-- Geração de visualizações para apoio à interpretação dos dados.
+## 📊 Dataset
+
+| Aspecto | Descrição |
+|--------|-----------|
+| **Origem** | Dados abertos - Secretaria de Estado de Justiça e Segurança Pública (SEJUSP) de Minas Gerais |
+| **Período** | Janeiro de 2017 a Junho de 2024 (7 anos e 6 meses) |
+| **Total de Registros** | 284.627 registros após limpeza |
+| **Unidades Prisionais** | 268 estabelecimentos prisionais mapeados |
+| **Municípios Cobertos** | 188 municípios do estado de MG |
+| **Regionalizações** | 19 RISP (Regiões Integradas de Segurança Pública) |
+
+### 📋 Variáveis Principais
+
+- **Características Demográficas**: Sexo na admissão
+- **Características Educacionais**: Nível de escolaridade na admissão (9 categorias)
+- **Localização**: Município, RISP, estabelecimento prisional
+- **Temporal**: Ano e mês da admissão
+- **Contagem**: Quantidade de pessoas por categoria
 
 ---
 
-## 🧠 Principais insights
-- A população prisional apresenta variações ao longo do período analisado.
-- Há uma predominância significativa de indivíduos do sexo masculino no sistema prisional.
-- Os níveis mais baixos de escolaridade concentram a maior parte da população prisional,
-  indicando possível relação com vulnerabilidade social.
+## 🔧 Metodologia
 
-> Observação: a análise é exploratória e não permite estabelecer relações de causalidade,
-apenas identificar padrões e tendências nos dados disponíveis.
+### 1️⃣ **Importação e Exploração Inicial**
+   - Carregamento de dados em formato Excel
+   - Verificação de dimensões e estrutura
+   - Identificação de tipos de dados
 
----
+### 2️⃣ **Limpeza de Dados**
+   - Remoção de registros duplicados e inconsistentes
+   - Tratamento de valores ausentes
+   - Padronização de nomes de colunas
+   - **Resultado**: Redução de 328.773 para 284.627 registros
 
-## 🛠️ Tecnologias utilizadas
-- Python  
-- Pandas  
-- Matplotlib  
-- Seaborn  
-- Jupyter Notebook  
-- Google Colab  
+### 3️⃣ **Detecção e Tratamento de Outliers**
+   - Identificação de valores extremos nas variáveis numéricas
+   - Remoção de outliers significativos (67.882 em sexo, 28.777 em escolaridade)
+   - Validação de integridade dos dados
 
----
+### 4️⃣ **Análise Exploratória (EDA)**
+   - Estatísticas descritivas por variável
+   - Distribuições de frequência
+   - Análise temporal (tendências por ano)
+   - Tabulações cruzadas (instituição × escolaridade)
 
-## 📁 Como visualizar o projeto
-- O notebook pode ser visualizado diretamente neste repositório do GitHub:
-  - `analise_populacaoprisionalMG_2017_2024.ipynb`
-- Também está disponível no Google Colab:
-  - https://colab.research.google.com/drive/1ESr8ZIiVcNlW785A_7c3kQjfPLPLXbCu
+### 5️⃣ **Visualizações**
+   - Gráficos de barras para distribuição de escolaridade
+   - Análises de composição por sexo
+   - Representação geográfica por RISP
 
----
-
-## 📌 Fonte dos dados
-Secretaria de Estado de Justiça e Segurança Pública de Minas Gerais (SEJUSP/MG):  
-https://www.seguranca.mg.gov.br/index.php/component/sppagebuilder/page/266
-
----
-
-## 🚀 Próximos passos
-- Analisar a população prisional por faixa etária, caso os dados estejam disponíveis.
-- Cruzar os dados com indicadores socioeconômicos.
-- Explorar séries temporais com maior profundidade.
+### 6️⃣ **Interpretação e Insights**
+   - Síntese de padrões identificados
+   - Discussão de implicações sociais
+   - Conexões com contexto nacional
 
 ---
 
-## 👩‍💻 Autora
-**Danielli Arçari**  
-Projeto desenvolvido para fins de aprendizado e portfólio em análise de dados.
+## 📈 Principais Insights
+
+### 🔴 **Escolaridade Predominante**
+
+Os dados revelam uma concentração significativa nos **níveis mais baixos de escolaridade**:
+
+- **1º Grau Incompleto**: 51.110 registros (maior concentração)
+- **Analfabeto / Semi-Alfabetizado**: Representação significativa
+- **Nível superior**: Representação mínima
+
+**Insight**: Os níveis mais baixos de escolaridade concentram a maior parte da população prisional, sugerindo uma possível relação entre **baixa escolaridade e vulnerabilidade social**, alinhado com pesquisas sobre determinantes sociais da criminalidade.
+
+### 🔴 **Disparidade de Gênero**
+
+A população prisional é **predominantemente masculina**:
+
+- **Sexo Masculino**: 253.692 registros (89%)
+- **Sexo Feminino**: Participação significativamente menor
+
+**Insight**: Existe uma forte **desigualdade de gênero no sistema prisional**, comportamento consistente com dados nacionais e internacionais que indicam maior incidência de criminalidade e encarceramento de homens.
+
+### 🔴 **Distribuição Geográfica**
+
+- **Penitenciária Prof. Aluízio Ignácio de Oliveira** (Ribeirão das Neves): Maior volume de presos
+- **Distribuição**: Concentração em regiões metropolitanas (especialmente 01ª RISP - Belo Horizonte)
+- **19 RISP mapeadas** em todo o estado
+
+### 🔴 **Período Analisado: 2017-2024**
+
+- Dados abrangem período de mudanças significativas na segurança pública estadual
+- Permite análise de tendências e oscilações na população carcerária
+- Cobre período pré e pós-reforma na gestão penitenciária
+
+---
+
+## 💻 Tecnologias Utilizadas
+
+```
+🐍 Python 3
+📊 Pandas - Manipulação, limpeza e transformação de dados
+📈 NumPy - Operações numéricas e estatísticas
+📉 Matplotlib & Seaborn - Visualizações gráficas profissionais
+🔗 Google Colab - Ambiente de desenvolvimento e análise
+```
+
+---
+
+## 🚀 Como Reproduzir
+
+### Pré-requisitos
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+```
+
+### Dados
+Carregue o arquivo Excel com dados da SEJUSP-MG:
+```python
+df = pd.read_excel('Dados_Abertos_Pop_Pris_Sexo_Escolaridade_Jan_2017_Jun_2024.xlsx')
+```
+
+### Execução
+1. Importe e explore os dados
+2. Execute limpeza e tratamento de outliers
+3. Padronize variáveis categóricas
+4. Gere análises exploratórias
+5. Crie visualizações
+6. Sintetize insights
+
+---
+
+## 📁 Estrutura do Projeto
+
+```
+📦 analise-populacao-prisional-mg/
+├── 📓 analise_populacaoprisionalMG_2017_2024.ipynb    # Notebook principal
+├── 📄 README.md                                        # Este arquivo
+├── 📊 dados_brutos.xlsx                               # Dataset original
+└── 💾 dados_limpos.csv                                # Dataset tratado
+```
+
+---
+
+## 🎓 Competências Demonstradas
+
+- ✅ **Análise Exploratória Avançada (EDA)**: Investigação sistemática de datasets reais com múltiplas dimensões
+- ✅ **Limpeza de Dados**: Tratamento rigoroso de inconsistências, duplicatas e outliers (redução de 14% de registros)
+- ✅ **Análise Estatística**: Estatísticas descritivas, distribuições, identificação de padrões
+- ✅ **Visualização de Dados**: Comunicação clara de insights complexos através de gráficos
+- ✅ **Pensamento Crítico**: Interpretação de dados com consciência de implicações sociais
+- ✅ **Documentação**: Código limpo, comentado e reprodutível
+- ✅ **Análise Social**: Conexão entre dados e contexto de segurança pública
+
+---
+
+## 📚 Contexto
+
+- **Realizado em**: Fevereiro de 2026
+- **Dados**: Dados públicos SEJUSP-MG (2017-2024)
+- **Propósito**: Projeto pessoal de análise exploratória
+- **Autora**: Danielli Meilene Coutinho Arçari
+
+---
+
+## 🔗 Links Relacionados
+
+- 💼 [LinkedIn](https://www.linkedin.com/in/danielli-arcari/)
+- 🌐 [Portfólio Completo](https://danielli-arcari.github.io/)
+- 📧 **Email**: axiadmc@gmail.com
+- 💻 [GitHub](https://github.com/danielli-arcari)
+- 📊 [Notebook (Google Colab)](https://colab.research.google.com/drive/1ESr8ZIiVcNlW785A_7c3kQjfPLPLXbCu?usp=sharing)
+
+---
+
+## 💡 Possíveis Extensões Futuras
+
+- 📊 **Análise Temporal**: Série temporal da população carcerária (2017-2024)
+- 🗺️ **Análise Geoespacial**: Mapeamento de unidades prisionais e densidade por região
+- 🤖 **Modelagem Preditiva**: Previsão de tendências futuras na população carcerária
+- 👥 **Análise de Interseccionalidade**: Cruzamento de múltiplas variáveis (gênero × escolaridade × região)
+- 📈 **Benchmark Estadual**: Comparação com outros estados brasileiros
+- 🎓 **Impacto de Políticas**: Análise de efeito de políticas de segurança específicas
+
+---
+
+## 📖 Observações Importantes
+
+Este projeto utiliza **dados públicos oficiais** da Secretaria de Estado de Justiça e Segurança Pública de Minas Gerais. A análise tem caráter **exploratório e descritivo**, com objetivo de identificar padrões e tendências na população prisional.
+
+As conclusões refletem os dados disponíveis e não devem ser generalizadas além do contexto específico do estado de Minas Gerais (2017-2024).
+
+---
+
+**Este projeto demonstra capacidade de executar análises exploratórias profundas em dados reais, com rigor metodológico, tratamento cuidadoso de dados e comunicação clara de insights complexos.**
+
+*Desenvolvido com foco em qualidade, reprodutibilidade e consciência social.*
