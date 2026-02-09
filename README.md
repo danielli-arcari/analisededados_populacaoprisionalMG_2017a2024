@@ -1,216 +1,79 @@
-# 🔍 Análise da População Prisional de Minas Gerais (2017-2024)
+# Análise da População Prisional de Minas Gerais
 
-## 📌 Visão Geral
+## Como surgiu esse projeto
 
-Este projeto apresenta uma **análise exploratória detalhada da população prisional do estado de Minas Gerais** no período de 2017 a junho de 2024, com foco em características demográficas e socioeducacionais.
+Eu estava procurando um tema próprio para praticar análise de dados e pensei: por que não trabalhar com algo que realmente importa? Achei dados públicos sobre a população prisional de MG disponibilizados pela Secretaria de Estado de Justiça e Segurança Pública e decidi analisar.
 
-A análise investiga padrões e tendências na composição da população carcerária, identificando disparidades de gênero, perfil educacional e distribuição geográfica nas unidades prisionais de MG.
+A ideia era entender perfis: quem está sendo preso? Qual é a escolaridade? Como isso mudou entre 2017 e 2024? Se consigo enxergar padrões, talvez isso seja útil para discussões sobre segurança pública e políticas prisionais.
 
----
+## Os dados
 
-## 🎯 Perguntas de Pesquisa
+Peguei dados abertos de janeiro de 2017 até junho de 2024 - 7 anos e meio de informações. No total eram 328.773 registros, mas após limpeza reduzi para 284.627 para eliminar inconsistências.
 
-Este projeto foi desenvolvido para responder às seguintes questões:
+Os dados incluíam:
+- Quem: sexo e nível de escolaridade na admissão
+- Onde: qual unidade prisional, município, região de segurança
+- Quando: ano e mês de entrada
 
-- Como evoluiu a população prisional ao longo dos 7 anos analisados?
-- Qual é a distribuição por sexo na população carcerária de MG?
-- Qual é o nível de escolaridade predominante entre os presos?
-- Quais são as disparidades socioeducacionais na população prisional?
+## Processo de análise
 
----
+### Primeiro: exploração
+Carreguei os dados e comecei a entender o tamanho (é muita informação mesmo), quantos bairros, quantos estabelecimentos prisionais, como estavam distribuídos os dados.
 
-## 📊 Dataset
+### Depois: limpeza
+Tive que:
+- Remover registros claramente duplicados ou com erros
+- Padronizar nomes de colunas (tinha tudo em maiúscula e com espaços)
+- Validar os valores
 
-| Aspecto | Descrição |
-|--------|-----------|
-| **Origem** | Dados abertos - Secretaria de Estado de Justiça e Segurança Pública (SEJUSP) de Minas Gerais |
-| **Período** | Janeiro de 2017 a Junho de 2024 (7 anos e 6 meses) |
-| **Total de Registros** | 284.627 registros após limpeza |
-| **Unidades Prisionais** | 268 estabelecimentos prisionais mapeados |
-| **Municípios Cobertos** | 188 municípios do estado de MG |
-| **Regionalizações** | 19 RISP (Regiões Integradas de Segurança Pública) |
+Tirei cerca de 44 mil registros - 15% do total - porque não eram confiáveis.
 
-### 📋 Variáveis Principais
+### Análise de verdade
+Comecei a fazer perguntas:
+- Qual é a distribuição por sexo?
+- Qual é o nível de escolaridade predominante?
+- Mudou algo entre 2017 e 2024?
+- Quais regiões têm mais população carcerária?
 
-- **Características Demográficas**: Sexo na admissão
-- **Características Educacionais**: Nível de escolaridade na admissão (9 categorias)
-- **Localização**: Município, RISP, estabelecimento prisional
-- **Temporal**: Ano e mês da admissão
-- **Contagem**: Quantidade de pessoas por categoria
+## O que descobri
 
----
+### Disparidade gigante de gênero
+A população prisional é **89% masculina**. Isso não é coincidência - dados nacionais e internacionais mostram a mesma coisa. Mas ver em números é diferente.
 
-## 🔧 Metodologia
+### Escolaridade baixa concentrada
+O nível mais comum é "1º Grau Incompleto" com mais de 51 mil registros. Tem também analfabeto, semi-alfabetizado. Muito poucos com superior completo.
 
-### 1️⃣ **Importação e Exploração Inicial**
-   - Carregamento de dados em formato Excel
-   - Verificação de dimensões e estrutura
-   - Identificação de tipos de dados
+Isso levanta uma questão: será que a baixa escolaridade leva ao crime, ou a falta de oportunidades para quem tem baixa escolaridade coloca essas pessoas em situações vulneráveis? Provavelmente ambas as coisas.
 
-### 2️⃣ **Limpeza de Dados**
-   - Remoção de registros duplicados e inconsistentes
-   - Tratamento de valores ausentes
-   - Padronização de nomes de colunas
-   - **Resultado**: Redução de 328.773 para 284.627 registros
+### Concentração geográfica
+A Penitenciária Prof. Aluízio Ignácio de Oliveira em Ribeirão das Neves é a maior. Tem muita concentração em torno de Belo Horizonte e região metropolitana, que faz sentido.
 
-### 3️⃣ **Detecção e Tratamento de Outliers**
-   - Identificação de valores extremos nas variáveis numéricas
-   - Remoção de outliers significativos (67.882 em sexo, 28.777 em escolaridade)
-   - Validação de integridade dos dados
+### 7 anos de dados
+Consegui ver como as coisas mudaram (ou não) de 2017 até 2024. Tem períodos com mais admissões, períodos com menos. Dá para pensar sobre o que pode ter influenciado.
 
-### 4️⃣ **Análise Exploratória (EDA)**
-   - Estatísticas descritivas por variável
-   - Distribuições de frequência
-   - Análise temporal (tendências por ano)
-   - Tabulações cruzadas (instituição × escolaridade)
+## Por que isso importa
 
-### 5️⃣ **Visualizações**
-   - Gráficos de barras para distribuição de escolaridade
-   - Análises de composição por sexo
-   - Representação geográfica por RISP
+Dados sobre população prisional costumam ser números abstratos nas notícias. Quando você senta e analisa, vê pessoas: quase 300 mil admissões em 7 anos em um único estado. Entender o perfil ajuda a ter conversas mais informadas sobre segurança pública, reabilitação, políticas prisionais.
 
-### 6️⃣ **Interpretação e Insights**
-   - Síntese de padrões identificados
-   - Discussão de implicações sociais
-   - Conexões com contexto nacional
+## Desafios
 
----
+O principal foi lidar com dados governamentais, que às vezes têm qualidade inconsistente. Alguns campos tinham padrões diferentes, alguns dados faltavam. Tive que ser cuidadosa para não descartar informação legítima só porque estava formatada diferente.
 
-## 📈 Principais Insights
+## Ferramentas
 
-### 🔴 **Escolaridade Predominante**
+Python, Pandas para manipulação pesada de dados, NumPy para estatísticas, Matplotlib e Seaborn para visualizar. Trabalhar com quase 300 mil linhas exigiu atenção com performance e memória.
 
-Os dados revelam uma concentração significativa nos **níveis mais baixos de escolaridade**:
+## O que aprendi
 
-- **1º Grau Incompleto**: 51.110 registros (maior concentração)
-- **Analfabeto / Semi-Alfabetizado**: Representação significativa
-- **Nível superior**: Representação mínima
+Análise de dados de verdade é 80% limpeza e 20% insights. Ninguém quer ver seus dados finais, mas se fizer tudo certo, os insights saem naturalmente.
 
-**Insight**: Os níveis mais baixos de escolaridade concentram a maior parte da população prisional, sugerindo uma possível relação entre **baixa escolaridade e vulnerabilidade social**, alinhado com pesquisas sobre determinantes sociais da criminalidade.
+## O que achei mais legal
 
-### 🔴 **Disparidade de Gênero**
+Conseguir traduzir números em histórias que fazem sentido. Um padrão de escolaridade não é só um número - é uma janela para entender vulnerabilidades sociais.
 
-A população prisional é **predominantemente masculina**:
+## Links
 
-- **Sexo Masculino**: 253.692 registros (89%)
-- **Sexo Feminino**: Participação significativamente menor
-
-**Insight**: Existe uma forte **desigualdade de gênero no sistema prisional**, comportamento consistente com dados nacionais e internacionais que indicam maior incidência de criminalidade e encarceramento de homens.
-
-### 🔴 **Distribuição Geográfica**
-
-- **Penitenciária Prof. Aluízio Ignácio de Oliveira** (Ribeirão das Neves): Maior volume de presos
-- **Distribuição**: Concentração em regiões metropolitanas (especialmente 01ª RISP - Belo Horizonte)
-- **19 RISP mapeadas** em todo o estado
-
-### 🔴 **Período Analisado: 2017-2024**
-
-- Dados abrangem período de mudanças significativas na segurança pública estadual
-- Permite análise de tendências e oscilações na população carcerária
-- Cobre período pré e pós-reforma na gestão penitenciária
-
----
-
-## 💻 Tecnologias Utilizadas
-
-```
-🐍 Python 3
-📊 Pandas - Manipulação, limpeza e transformação de dados
-📈 NumPy - Operações numéricas e estatísticas
-📉 Matplotlib & Seaborn - Visualizações gráficas profissionais
-🔗 Google Colab - Ambiente de desenvolvimento e análise
-```
-
----
-
-## 🚀 Como Reproduzir
-
-### Pré-requisitos
-```python
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-```
-
-### Dados
-Carregue o arquivo Excel com dados da SEJUSP-MG:
-```python
-df = pd.read_excel('Dados_Abertos_Pop_Pris_Sexo_Escolaridade_Jan_2017_Jun_2024.xlsx')
-```
-
-### Execução
-1. Importe e explore os dados
-2. Execute limpeza e tratamento de outliers
-3. Padronize variáveis categóricas
-4. Gere análises exploratórias
-5. Crie visualizações
-6. Sintetize insights
-
----
-
-## 📁 Estrutura do Projeto
-
-```
-📦 analise-populacao-prisional-mg/
-├── 📓 analise_populacaoprisionalMG_2017_2024.ipynb    # Notebook principal
-├── 📄 README.md                                        # Este arquivo
-├── 📊 dados_brutos.xlsx                               # Dataset original
-└── 💾 dados_limpos.csv                                # Dataset tratado
-```
-
----
-
-## 🎓 Competências Demonstradas
-
-- ✅ **Análise Exploratória Avançada (EDA)**: Investigação sistemática de datasets reais com múltiplas dimensões
-- ✅ **Limpeza de Dados**: Tratamento rigoroso de inconsistências, duplicatas e outliers (redução de 14% de registros)
-- ✅ **Análise Estatística**: Estatísticas descritivas, distribuições, identificação de padrões
-- ✅ **Visualização de Dados**: Comunicação clara de insights complexos através de gráficos
-- ✅ **Pensamento Crítico**: Interpretação de dados com consciência de implicações sociais
-- ✅ **Documentação**: Código limpo, comentado e reprodutível
-- ✅ **Análise Social**: Conexão entre dados e contexto de segurança pública
-
----
-
-## 📚 Contexto
-
-- **Realizado em**: Fevereiro de 2026
-- **Dados**: Dados públicos SEJUSP-MG (2017-2024)
-- **Propósito**: Projeto pessoal de análise exploratória
-- **Autora**: Danielli Meilene Coutinho Arçari
-
----
-
-## 🔗 Links Relacionados
-
-- 💼 [LinkedIn](https://www.linkedin.com/in/danielli-arcari/)
-- 🌐 [Portfólio Completo](https://danielli-arcari.github.io/)
-- 📧 **Email**: axiadmc@gmail.com
-- 💻 [GitHub](https://github.com/danielli-arcari)
-- 📊 [Notebook (Google Colab)](https://colab.research.google.com/drive/1ESr8ZIiVcNlW785A_7c3kQjfPLPLXbCu?usp=sharing)
-
----
-
-## 💡 Possíveis Extensões Futuras
-
-- 📊 **Análise Temporal**: Série temporal da população carcerária (2017-2024)
-- 🗺️ **Análise Geoespacial**: Mapeamento de unidades prisionais e densidade por região
-- 🤖 **Modelagem Preditiva**: Previsão de tendências futuras na população carcerária
-- 👥 **Análise de Interseccionalidade**: Cruzamento de múltiplas variáveis (gênero × escolaridade × região)
-- 📈 **Benchmark Estadual**: Comparação com outros estados brasileiros
-- 🎓 **Impacto de Políticas**: Análise de efeito de políticas de segurança específicas
-
----
-
-## 📖 Observações Importantes
-
-Este projeto utiliza **dados públicos oficiais** da Secretaria de Estado de Justiça e Segurança Pública de Minas Gerais. A análise tem caráter **exploratório e descritivo**, com objetivo de identificar padrões e tendências na população prisional.
-
-As conclusões refletem os dados disponíveis e não devem ser generalizadas além do contexto específico do estado de Minas Gerais (2017-2024).
-
----
-
-**Este projeto demonstra capacidade de executar análises exploratórias profundas em dados reais, com rigor metodológico, tratamento cuidadoso de dados e comunicação clara de insights complexos.**
-
-*Desenvolvido com foco em qualidade, reprodutibilidade e consciência social.*
+- [Notebook no Colab](https://colab.research.google.com/drive/1ESr8ZIiVcNlW785A_7c3kQjfPLPLXbCu?usp=sharing)
+- [Repositório no GitHub](https://github.com/danielli-arcari/analisededados_populacaoprisionalMG_2017a2024)
+- [Meu portfólio](https://danielli-arcari.github.io/)
+- [LinkedIn](https://www.linkedin.com/in/danielli-arcari/)
