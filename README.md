@@ -1,75 +1,113 @@
-# Análise da População Prisional de Minas Gerais
+Análise da População Prisional de Minas Gerais (2017–2024)
+Sobre o projeto
 
-## Como surgiu esse projeto
+Este projeto apresenta uma análise exploratória da população prisional admitida no estado de Minas Gerais entre 2017 e 2024.
 
-Eu estava procurando um tema próprio para praticar análise de dados e pensei: por que não trabalhar com algo que realmente importa? Achei dados públicos sobre a população prisional de MG disponibilizados pela Secretaria de Estado de Justiça e Segurança Pública e decidi analisar.
+A análise foi realizada a partir de dados públicos disponibilizados pela Secretaria de Justiça e Segurança Pública de Minas Gerais:
 
-A ideia era entender perfis: quem está sendo preso? Qual é a escolaridade? Como isso mudou entre 2017 e 2024? Se consigo enxergar padrões, talvez isso seja útil para discussões sobre segurança pública e políticas prisionais.
+https://www.seguranca.mg.gov.br/index.php/component/sppagebuilder/page/266
 
-## Os dados
+O objetivo principal foi aplicar técnicas de limpeza, organização e análise de dados em grande volume, buscando identificar padrões demográficos e educacionais nas admissões ao sistema prisional.
 
-Peguei dados abertos de janeiro de 2017 até junho de 2024 - 7 anos e meio de informações. No total eram 328.773 registros, mas após limpeza reduzi para 284.627 para eliminar inconsistências.
+Objetivos
 
-Os dados incluíam:
-- Quem: sexo e nível de escolaridade na admissão
-- Onde: qual unidade prisional, município, região de segurança
-- Quando: ano e mês de entrada
+Responder às seguintes perguntas:
 
-## Processo de análise
+Como evoluiu o volume de admissões ao longo dos anos?
 
-### Primeiro: exploração
-Carreguei os dados e comecei a entender o tamanho (é muita informação mesmo), quantos bairros, quantos estabelecimentos prisionais, como estavam distribuídos os dados.
+Qual a distribuição percentual por sexo?
 
-### Depois: limpeza
-Tive que:
-- Remover registros claramente duplicados ou com erros
-- Padronizar nomes de colunas (tinha tudo em maiúscula e com espaços)
-- Validar os valores
+Qual o nível de escolaridade predominante na admissão?
 
-Tirei cerca de 44 mil registros - 15% do total - porque não eram confiáveis.
+Há concentração relevante em determinadas instituições ou unidades prisionais?
 
-### Análise de verdade
-Comecei a fazer perguntas:
-- Qual é a distribuição por sexo?
-- Qual é o nível de escolaridade predominante?
-- Mudou algo entre 2017 e 2024?
-- Quais regiões têm mais população carcerária?
+Tratamento e preparação dos dados
 
-## O que descobri
+A base original continha 328.773 registros.
 
-### Disparidade gigante de gênero
-A população prisional é **89% masculina**. Isso não é coincidência - dados nacionais e internacionais mostram a mesma coisa. Mas ver em números é diferente.
+As seguintes etapas foram realizadas:
 
-### Escolaridade baixa concentrada
-O nível mais comum é "1º Grau Incompleto" com mais de 51 mil registros. Tem também analfabeto, semi-alfabetizado. Muito poucos com superior completo.
+Remoção de 44.146 registros duplicados
 
-Isso levanta uma questão: será que a baixa escolaridade leva ao crime, ou a falta de oportunidades para quem tem baixa escolaridade coloca essas pessoas em situações vulneráveis? Provavelmente ambas as coisas.
+Padronização dos nomes das colunas
 
-### Concentração geográfica
-A Penitenciária Prof. Aluízio Ignácio de Oliveira em Ribeirão das Neves é a maior. Tem muita concentração em torno de Belo Horizonte e região metropolitana, que faz sentido.
+Criação de variável temporal consolidando ano e mês
 
-### 7 anos de dados
-Consegui ver como as coisas mudaram (ou não) de 2017 até 2024. Tem períodos com mais admissões, períodos com menos. Dá para pensar sobre o que pode ter influenciado.
+Exclusão de 2024 da análise de crescimento por se tratar de ano com dados parciais
 
-## Por que isso importa
+Utilização da variável contagem_ipl como métrica principal para agregações, garantindo consistência analítica
 
-Dados sobre população prisional costumam ser números abstratos nas notícias. Quando você senta e analisa, vê pessoas: quase 300 mil admissões em 7 anos em um único estado. Entender o perfil ajuda a ter conversas mais informadas sobre segurança pública, reabilitação, políticas prisionais.
+Após o tratamento, a base final passou a conter 284.627 registros válidos.
 
-## Desafios
+Evolução temporal das admissões
 
-O principal foi lidar com dados governamentais, que às vezes têm qualidade inconsistente. Alguns campos tinham padrões diferentes, alguns dados faltavam. Tive que ser cuidadosa para não descartar informação legítima só porque estava formatada diferente.
+A análise de crescimento anual considerou apenas anos completos, de 2017 a 2023.
 
-## Ferramentas
+Observou-se:
 
-Python, Pandas para manipulação pesada de dados, NumPy para estatísticas, Matplotlib e Seaborn para visualizar. Trabalhar com quase 300 mil linhas exigiu atenção com performance e memória.
+Crescimento relevante entre 2017 e 2018
 
-## O que aprendi
+Oscilações negativas e positivas nos anos seguintes
 
-Análise de dados de verdade é 80% limpeza e 20% insights. Ninguém quer ver seus dados finais, mas se fizer tudo certo, os insights saem naturalmente.
+Redução significativa em 2020
 
-## O que achei mais legal
+Estabilização relativa entre 2021 e 2023
 
-Conseguir traduzir números em histórias que fazem sentido. Um padrão de escolaridade não é só um número - é uma janela para entender vulnerabilidades sociais.
+O ano de 2024 foi excluído da análise de crescimento por conter apenas dados até junho, o que comprometeria a comparabilidade.
+
+Distribuição por sexo
+
+A análise baseada na soma de admissões indica forte predominância masculina:
+
+Masculino: 95,78%
+
+Feminino: 4,22%
+
+Essa proporção mantém-se estável ao longo do período analisado, caracterizando padrão estrutural do sistema prisional estadual.
+
+Escolaridade na admissão
+
+A categoria mais frequente foi Fundamental Incompleto, representando 67,62% do total de admissões no período.
+
+Os dados evidenciam concentração expressiva em níveis mais baixos de escolarização formal. A análise é descritiva e não permite estabelecer relação causal, mas aponta padrão consistente ao longo dos anos.
+
+Instituições e concentração
+
+A maior parte das admissões ocorre em unidades administradas pelo DEPEN.
+
+O ranking de estabelecimentos evidencia concentração relevante em determinadas unidades prisionais, indicando centralização operacional.
+
+Tecnologias utilizadas
+
+Python 3
+
+Pandas
+
+NumPy
+
+Matplotlib
+
+Seaborn
+
+Google Colab
+
+Limitações
+
+Ausência de variáveis socioeconômicas detalhadas
+
+Não há dados sobre reincidência ou tempo de permanência
+
+A análise é exclusivamente exploratória
+
+Não foram aplicados modelos estatísticos inferenciais
+
+Considerações finais
+
+O projeto demonstra aplicação prática de técnicas de limpeza, organização e análise exploratória de dados públicos em grande volume.
+
+Os resultados indicam estabilidade estrutural no perfil das admissões, com predominância masculina, forte concentração em níveis educacionais mais baixos e centralização em determinadas unidades prisionais.
+
+A análise foi conduzida com foco em consistência metodológica e interpretação responsável dos dados.
 
 ## Links
 
