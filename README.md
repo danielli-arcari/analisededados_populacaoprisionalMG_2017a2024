@@ -110,13 +110,6 @@ Esses resultados não indicam causalidade, mas levantam hipóteses relevantes pa
 
 ---
 
-## Estrutura do projeto
-
----
-
-
----
-
 ## Possíveis extensões do projeto
 
 Este projeto pode ser ampliado com novas análises, como:
