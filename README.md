@@ -1,117 +1,150 @@
-Análise da População Prisional de Minas Gerais (2017–2024)
-Sobre o projeto
+# Análise da População Prisional de Minas Gerais (2017–2024)
 
-Este projeto apresenta uma análise exploratória da população prisional admitida no estado de Minas Gerais entre 2017 e 2024.
+## Visão geral
 
-A análise foi realizada a partir de dados públicos disponibilizados pela Secretaria de Justiça e Segurança Pública de Minas Gerais:
+Este projeto apresenta uma análise exploratória da população prisional do estado de Minas Gerais entre os anos de 2017 e 2024.
 
-https://www.seguranca.mg.gov.br/index.php/component/sppagebuilder/page/266
+O objetivo principal é compreender como essa população evoluiu ao longo do tempo e analisar características relevantes como sexo e nível de escolaridade das pessoas privadas de liberdade.
 
-O objetivo principal foi aplicar técnicas de limpeza, organização e análise de dados em grande volume, buscando identificar padrões demográficos e educacionais nas admissões ao sistema prisional.
+A análise busca identificar padrões nos dados e levantar possíveis reflexões sobre fatores sociais relacionados ao sistema prisional.
 
-Objetivos
+Os dados utilizados são públicos e foram obtidos no portal da Secretaria de Segurança Pública de Minas Gerais.
 
-Responder às seguintes perguntas:
+Fonte dos dados  
+[https://www.seguranca.mg.gov.br/](https://www.seguranca.mg.gov.br/index.php/component/sppagebuilder/page/266)
 
-Como evoluiu o volume de admissões ao longo dos anos?
+---
 
-Qual a distribuição percentual por sexo?
+## Perguntas de análise
 
-Qual o nível de escolaridade predominante na admissão?
+Durante o projeto foram investigadas as seguintes perguntas:
 
-Há concentração relevante em determinadas instituições ou unidades prisionais?
+- Como a população prisional de Minas Gerais evoluiu entre 2017 e 2024
+- Qual é a distribuição da população por sexo
+- Qual o nível de escolaridade predominante entre as pessoas privadas de liberdade
 
-Tratamento e preparação dos dados
+Essas perguntas orientam toda a análise exploratória realizada no notebook.
 
-A base original continha 328.773 registros.
+---
 
-As seguintes etapas foram realizadas:
+## Tecnologias utilizadas
 
-Remoção de 44.146 registros duplicados
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Jupyter Notebook
 
-Padronização dos nomes das colunas
+Essas ferramentas foram utilizadas para manipulação dos dados, análise exploratória e criação de visualizações.
 
-Criação de variável temporal consolidando ano e mês
+---
 
-Exclusão de 2024 da análise de crescimento por se tratar de ano com dados parciais
+## Etapas da análise
 
-Utilização da variável contagem_ipl como métrica principal para agregações, garantindo consistência analítica
+### 1. Entendimento inicial dos dados
 
-Após o tratamento, a base final passou a conter 284.627 registros válidos.
+A primeira etapa do projeto consistiu em explorar o conjunto de dados para compreender sua estrutura.
 
-Evolução temporal das admissões
+Foram analisados:
 
-A análise de crescimento anual considerou apenas anos completos, de 2017 a 2023.
+- quantidade de registros
+- tipos de variáveis
+- possíveis valores ausentes
+- consistência das informações
 
-Observou-se:
+Esse processo é importante para garantir que a análise seja feita sobre dados confiáveis.
 
-Crescimento relevante entre 2017 e 2018
+---
 
-Oscilações negativas e positivas nos anos seguintes
+### 2. Limpeza e preparação dos dados
 
-Redução significativa em 2020
+Nesta etapa os dados foram organizados para facilitar a análise.
 
-Estabilização relativa entre 2021 e 2023
+Entre as atividades realizadas estão:
 
-O ano de 2024 foi excluído da análise de crescimento por conter apenas dados até junho, o que comprometeria a comparabilidade.
+- verificação de inconsistências
+- organização das variáveis
+- preparação das colunas utilizadas nas análises
 
-Distribuição por sexo
+A preparação dos dados é uma etapa fundamental para evitar interpretações incorretas.
 
-A análise baseada na soma de admissões indica forte predominância masculina:
+---
 
-Masculino: 95,78%
+### 3. Análise da evolução da população prisional
 
-Feminino: 4,22%
+Foi analisada a evolução do número de pessoas privadas de liberdade ao longo do período estudado.
 
-Essa proporção mantém-se estável ao longo do período analisado, caracterizando padrão estrutural do sistema prisional estadual.
+A visualização permite observar tendências de crescimento, estabilidade ou redução da população prisional ao longo dos anos.
 
-Escolaridade na admissão
+Esse tipo de análise ajuda a entender o comportamento do sistema prisional ao longo do tempo.
 
-A categoria mais frequente foi Fundamental Incompleto, representando 67,62% do total de admissões no período.
+---
 
-Os dados evidenciam concentração expressiva em níveis mais baixos de escolarização formal. A análise é descritiva e não permite estabelecer relação causal, mas aponta padrão consistente ao longo dos anos.
+### 4. Distribuição por sexo
 
-Instituições e concentração
+Também foi analisada a distribuição da população prisional entre homens e mulheres.
 
-A maior parte das admissões ocorre em unidades administradas pelo DEPEN.
+Esse recorte ajuda a compreender a composição demográfica da população privada de liberdade.
 
-O ranking de estabelecimentos evidencia concentração relevante em determinadas unidades prisionais, indicando centralização operacional.
+---
 
-Tecnologias utilizadas
+### 5. Escolaridade da população prisional
 
-Python 3
+Um dos pontos mais relevantes da análise foi observar o nível de escolaridade predominante entre as pessoas privadas de liberdade.
 
-Pandas
+Os dados indicam uma forte concentração em níveis mais baixos de escolaridade.
 
-NumPy
+Esse padrão pode estar associado a fatores sociais como desigualdade educacional e vulnerabilidade socioeconômica.
 
-Matplotlib
+---
 
-Seaborn
+## Principais insights
 
-Google Colab
+A análise exploratória revelou alguns pontos importantes:
 
-Limitações
+- A população prisional apresenta variações ao longo do período analisado.
+- A maior parte da população prisional é composta por homens.
+- Níveis mais baixos de escolaridade concentram grande parte das pessoas privadas de liberdade.
 
-Ausência de variáveis socioeconômicas detalhadas
+Esses resultados não indicam causalidade, mas levantam hipóteses relevantes para estudos futuros sobre desigualdade social e sistema prisional.
 
-Não há dados sobre reincidência ou tempo de permanência
+---
 
-A análise é exclusivamente exploratória
+## Estrutura do projeto
 
-Não foram aplicados modelos estatísticos inferenciais
+---
 
-Considerações finais
 
-O projeto demonstra aplicação prática de técnicas de limpeza, organização e análise exploratória de dados públicos em grande volume.
+---
 
-Os resultados indicam estabilidade estrutural no perfil das admissões, com predominância masculina, forte concentração em níveis educacionais mais baixos e centralização em determinadas unidades prisionais.
+## Possíveis extensões do projeto
 
-A análise foi conduzida com foco em consistência metodológica e interpretação responsável dos dados.
+Este projeto pode ser ampliado com novas análises, como:
 
-## Links
+- análise por faixa etária
+- comparação entre estados
+- análise temporal mais detalhada
+- integração com indicadores sociais e educacionais
 
-- [Notebook no Colab](https://colab.research.google.com/drive/1ESr8ZIiVcNlW785A_7c3kQjfPLPLXbCu?usp=sharing)
-- [Repositório no GitHub](https://github.com/danielli-arcari/analisededados_populacaoprisionalMG_2017a2024)
-- [Meu portfólio](https://danielli-arcari.github.io/)
-- [LinkedIn](https://www.linkedin.com/in/danielli-arcari/)
+Essas extensões podem gerar uma compreensão mais profunda sobre o contexto da população prisional.
+
+---
+
+## Sobre o projeto
+
+Este projeto foi desenvolvido como parte do processo de aprendizado em análise de dados, com foco em análise exploratória e interpretação de dados públicos.
+
+A proposta é aplicar técnicas de análise para investigar fenômenos sociais a partir de dados reais.
+
+---
+
+## Contato
+
+LinkedIn  
+https://www.linkedin.com/in/danielli-arcari
+
+Portfólio  
+https://danielliarcari.vercel.app
+
+GitHub  
+https://github.com/danielli-arcari
